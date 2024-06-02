@@ -4,10 +4,12 @@ import Home from "./pages/Home/Home";
 import Movies from "./pages/Movies/Movies";
 import TVSeries from "./pages/TVSeries/TVSeries";
 import Bookmarked from "./pages/Bookmarked/Bookmarked";
+import Header from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
