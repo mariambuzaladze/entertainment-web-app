@@ -16,7 +16,7 @@ import BookmarkedIconPicked from "/assets/icon-category-bookmark.svg";
 
 export default function Header() {
   return (
-    <header className="flex p-4 justify-between items-center">
+    <header className="flex p-4 justify-between items-center bg-[#161D2F]">
       <img src={Logo} alt="icon logo" />
       <div className="flex gap-6">
         <img src={HomeIcon} alt="Home page icon" />
