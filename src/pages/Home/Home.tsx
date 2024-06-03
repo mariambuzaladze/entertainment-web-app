@@ -3,6 +3,7 @@ import SearchBar from "../../components/SearchBar";
 import { useContext } from "react";
 import InfoContainer from "../../components/InfoContainer";
 import BookmarkDiv from "../../components/BookmarkDiv";
+import Item from "../../components/Item";
 
 interface IData {
   title: string;
@@ -67,19 +68,7 @@ export default function Home() {
         <p className="text-white text-lg">Recommended for you</p>
         <div className="grid grid-cols-2 gap-4">
           {data.data?.map((e) => (
-            <div key={e.title} className="flex flex-col gap-2">
-              <div
-                className="flex flex-col rounded-md pt-2 pr-2 pb-[70px] pl-[124px]"
-                style={{
-                  backgroundImage: `url(${e.thumbnail.regular.small})`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <BookmarkDiv onClick={() => handleBookmarkClick(e)} e={e} />
-              </div>
-
-              <InfoContainer item={e} />
-            </div>
+            <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}
         </div>
       </div>
