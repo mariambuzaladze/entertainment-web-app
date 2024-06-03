@@ -42,7 +42,7 @@ export default function Home() {
   };
 
   return (
-    <div className="px-4 py-6 flex flex-col gap-6">
+    <main className="px-4 py-6 flex flex-col gap-6">
       <SearchBar placeholder="Search for movies or TV series" />
 
       <div className="flex flex-col gap-4">
@@ -72,6 +72,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
