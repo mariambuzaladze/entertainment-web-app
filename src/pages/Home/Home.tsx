@@ -46,7 +46,7 @@ export default function Home() {
       <SearchBar placeholder="Search for movies or TV series" />
 
       <div className="flex flex-col gap-4">
-        <p className="text-white text-lg">Trending</p>
+        <p className="text-white text-2xl">Trending</p>
         <div className="overflow-x-auto whitespace-nowrap flex gap-4">
           {trending?.map((e) => (
             <div
@@ -65,7 +65,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <p className="text-white text-lg">Recommended for you</p>
+        <p className="text-white text-2xl">Recommended for you</p>
         <div className="grid grid-cols-2 gap-4">
           {data.data?.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />

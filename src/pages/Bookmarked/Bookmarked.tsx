@@ -25,7 +25,12 @@ interface IData {
 
 export default function TVSeries() {
   const data = useContext(DataContext);
-  const movies = data.data?.filter((e) => e.isBookmarked);
+  const bookmarkedMovies = data.data?.filter(
+    (e) => e.isBookmarked && e.category === "Movie"
+  );
+  const bookmarkedTVSeries = data.data?.filter(
+    (e) => e.isBookmarked && e.category === "TV Series"
+  );
 
   const handleBookmarkClick = (clickedItem: IData) => {
     data.setData((prevData) => {
@@ -41,11 +46,22 @@ export default function TVSeries() {
   return (
     <main className="px-4 py-6 flex flex-col gap-6">
       <SearchBar placeholder="Search for movies" />
+
       <div className="flex flex-col gap-4">
-        <p className="text-white text-lg">Bookmarked Movies</p>
+        <p className="text-white text-2xl">Bookmarked Movies</p>
 
         <div className="grid grid-cols-2 gap-4">
-          {movies?.map((e) => (
+          {bookmarkedMovies?.map((e) => (
+            <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <p className="text-white text-2xl">Bookmarked TV Series</p>
+
+        <div className="grid grid-cols-2 gap-4">
+          {bookmarkedTVSeries?.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}
         </div>

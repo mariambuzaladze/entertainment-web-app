@@ -42,7 +42,7 @@ export default function Movies() {
     <main className="px-4 py-6 flex flex-col gap-6">
       <SearchBar placeholder="Search for movies" />
       <div className="flex flex-col gap-4">
-        <p className="text-white text-lg">Movies</p>
+        <p className="text-white text-2xl">Movies</p>
 
         <div className="grid grid-cols-2 gap-4">
           {movies?.map((e) => (
