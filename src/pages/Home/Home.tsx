@@ -65,21 +65,23 @@ export default function Home() {
 
       <div>
         <p className="text-white text-lg">Trending</p>
-        {data.data?.map((e) => (
-          <div key={e.title}>
-            <div
-              className="flex flex-col gap-10 rounded-md p-4"
-              style={{
-                backgroundImage: `url(${e.thumbnail.regular.small})`,
-                backgroundSize: "cover",
-              }}
-            >
-              <BookmarkDiv onClick={() => handleBookmarkClick(e)} e={e} />
-            </div>
+        <div className="grid grid-cols-2 gap-4">
+          {data.data?.map((e) => (
+            <div key={e.title} className="flex flex-col gap-2">
+              <div
+                className="flex flex-col rounded-md pt-2 pr-2 pb-[70px] pl-[124px]"
+                style={{
+                  backgroundImage: `url(${e.thumbnail.regular.small})`,
+                  backgroundSize: "cover",
+                }}
+              >
+                <BookmarkDiv onClick={() => handleBookmarkClick(e)} e={e} />
+              </div>
 
-            <InfoContainer item={e} />
-          </div>
-        ))}
+              <InfoContainer item={e} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

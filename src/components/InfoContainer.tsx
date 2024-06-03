@@ -23,8 +23,8 @@ interface IData {
 
 export default function InfoContainer({ item }: { item: IData }) {
   return (
-    <div>
-      <div className="flex items-center gap-3 text-sm text-white opacity-75 mr-[90px]">
+    <div className="flex flex-col gap-1">
+      <div className="flex items-center gap-3 text-sm text-white opacity-75 mr-[90px] w-max">
         <p>{item.year}</p>
         <img
           src={item.category === "Movie" ? MoviesIcon : TVSeriesIcon}
