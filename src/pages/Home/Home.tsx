@@ -6,10 +6,41 @@ import BookmarkLogoFull from "/assets/icon-bookmark-full.svg";
 import MoviesIcon from "/assets/icon-category-movie.svg";
 import TVSeriesIcon from "/assets/icon-category-tv.svg";
 
+interface IData {
+  title: string;
+  thumbnail: {
+    trending?: {
+      small: string;
+      large: string;
+    };
+    regular: {
+      small: string;
+      medium: string;
+      large: string;
+    };
+  };
+  year: number;
+  category: string;
+  rating: string;
+  isBookmarked: boolean;
+  isTrending: boolean;
+}
+
 export default function Home() {
   const data = useContext(DataContext);
 
   const trending = data.data?.filter((e) => e.isTrending === true);
+
+  const handleBookmarkClick = (clickedItem: IData) => {
+    data.setData((prevData) => {
+      return prevData.map((item) => {
+        if (item.title === clickedItem.title) {
+          return { ...item, isBookmarked: !item.isBookmarked };
+        }
+        return item;
+      });
+    });
+  };
 
   return (
     <div className="px-4 py-6 flex flex-col gap-6">
@@ -26,7 +57,10 @@ export default function Home() {
                 backgroundSize: "cover",
               }}
             >
-              <div className="rounded-full bg-gray-800 p-2 w-fit self-end">
+              <div
+                className="rounded-full bg-gray-800 p-2 w-fit self-end"
+                onClick={() => handleBookmarkClick(e)}
+              >
                 <img
                   src={e.isBookmarked ? BookmarkLogoFull : BookmarkLogoEmpty}
                   alt="Bookmarked icon"
