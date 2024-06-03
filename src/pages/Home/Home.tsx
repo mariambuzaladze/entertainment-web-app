@@ -56,7 +56,7 @@ export default function Home() {
                 backgroundSize: "cover",
               }}
             >
-              <BookmarkDiv onClick={handleBookmarkClick(e)} e={e} />
+              <BookmarkDiv onClick={() => handleBookmarkClick(e)} e={e} />
               <InfoContainer item={e} />
             </div>
           ))}
@@ -64,6 +64,7 @@ export default function Home() {
       </div>
 
       <div>
+        <p className="text-white text-lg">Trending</p>
         {data.data?.map((e) => (
           <div key={e.title}>
             <div
@@ -73,7 +74,7 @@ export default function Home() {
                 backgroundSize: "cover",
               }}
             >
-              <BookmarkDiv onClick={handleBookmarkClick(e)} e={e} />
+              <BookmarkDiv onClick={() => handleBookmarkClick(e)} e={e} />
             </div>
 
             <InfoContainer item={e} />
