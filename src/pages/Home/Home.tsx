@@ -63,8 +63,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <p className="text-white text-lg">Trending</p>
+      <div className="flex flex-col gap-4">
+        <p className="text-white text-lg">Recommended for you</p>
         <div className="grid grid-cols-2 gap-4">
           {data.data?.map((e) => (
             <div key={e.title} className="flex flex-col gap-2">
