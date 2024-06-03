@@ -3,8 +3,9 @@ import SearchBar from "../../components/SearchBar";
 import { useContext } from "react";
 import BookmarkLogoEmpty from "/assets/icon-bookmark-empty.svg";
 import BookmarkLogoFull from "/assets/icon-bookmark-full.svg";
-import MoviesIcon from "/assets/icon-category-movie.svg";
-import TVSeriesIcon from "/assets/icon-category-tv.svg";
+import InfoContainer from "../../components/InfoContainer";
+// import MoviesIcon from "/assets/icon-category-movie.svg";
+// import TVSeriesIcon from "/assets/icon-category-tv.svg";
 
 interface IData {
   title: string;
@@ -67,19 +68,7 @@ export default function Home() {
                   alt="Bookmarked icon"
                 />
               </div>
-              <div>
-                <div className="flex items-center gap-3 text-sm text-white opacity-75 mr-[90px]">
-                  <p>{e.year}</p>
-                  <img
-                    src={e.category === "Movie" ? MoviesIcon : TVSeriesIcon}
-                    alt="category icon"
-                  />
-                  <p>{e.category}</p>
-                  <p>{e.rating}</p>
-                </div>
-
-                <p className="text-white">{e.title}</p>
-              </div>
+              <InfoContainer item={e} />
             </div>
           ))}
         </div>
@@ -106,19 +95,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div>
-              <div className="flex items-center gap-3 text-sm text-white opacity-75 mr-[90px]">
-                <p>{e.year}</p>
-                <img
-                  src={e.category === "Movie" ? MoviesIcon : TVSeriesIcon}
-                  alt="category icon"
-                />
-                <p>{e.category}</p>
-                <p>{e.rating}</p>
-              </div>
-
-              <p className="text-white">{e.title}</p>
-            </div>
+            <InfoContainer item={e} />
           </div>
         ))}
       </div>
