@@ -1,11 +1,8 @@
 import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import { useContext } from "react";
-import BookmarkLogoEmpty from "/assets/icon-bookmark-empty.svg";
-import BookmarkLogoFull from "/assets/icon-bookmark-full.svg";
 import InfoContainer from "../../components/InfoContainer";
-// import MoviesIcon from "/assets/icon-category-movie.svg";
-// import TVSeriesIcon from "/assets/icon-category-tv.svg";
+import BookmarkDiv from "../../components/BookmarkDiv";
 
 interface IData {
   title: string;
@@ -59,15 +56,7 @@ export default function Home() {
                 backgroundSize: "cover",
               }}
             >
-              <div
-                className="rounded-full bg-gray-800 p-2 w-fit self-end"
-                onClick={() => handleBookmarkClick(e)}
-              >
-                <img
-                  src={e.isBookmarked ? BookmarkLogoFull : BookmarkLogoEmpty}
-                  alt="Bookmarked icon"
-                />
-              </div>
+              <BookmarkDiv onClick={handleBookmarkClick(e)} e={e} />
               <InfoContainer item={e} />
             </div>
           ))}
@@ -84,15 +73,7 @@ export default function Home() {
                 backgroundSize: "cover",
               }}
             >
-              <div
-                className="rounded-full bg-gray-800 p-2 w-fit self-end"
-                onClick={() => handleBookmarkClick(e)}
-              >
-                <img
-                  src={e.isBookmarked ? BookmarkLogoFull : BookmarkLogoEmpty}
-                  alt="Bookmarked icon"
-                />
-              </div>
+              <BookmarkDiv onClick={handleBookmarkClick(e)} e={e} />
             </div>
 
             <InfoContainer item={e} />
