@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "/assets/logo.svg";
 import Temporary from "/vite.svg";
 import MoviesIcon from "/assets/icon-nav-movies.svg";
@@ -8,7 +8,21 @@ import TVSeriesIcon from "/assets/icon-nav-tv-series.svg";
 import TVSeriesIconPicked from "/assets/icon-category-tv.svg";
 
 export default function Header() {
+  const location = useLocation();
   const [picked, setPicked] = useState("home");
+
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === "/") {
+      setPicked("home");
+    } else if (path === "/movies") {
+      setPicked("movies");
+    } else if (path === "/TVSeries") {
+      setPicked("tv");
+    } else if (path === "/Bookmarked") {
+      setPicked("bookmarked");
+    }
+  }, [location]);
 
   return (
     <header className="flex p-4 justify-between items-center bg-[#161D2F]">
