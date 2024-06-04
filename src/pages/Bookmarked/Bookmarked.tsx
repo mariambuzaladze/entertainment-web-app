@@ -45,7 +45,7 @@ export default function TVSeries() {
 
   return (
     <main className="px-4 py-6 flex flex-col gap-6">
-      <SearchBar placeholder="Search for movies" />
+      <SearchBar placeholder="Search for bookmarked shows" />
 
       <div className="flex flex-col gap-4">
         <p className="text-white text-2xl">Bookmarked Movies</p>
