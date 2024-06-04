@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import Item from "../../components/Item";
@@ -23,14 +23,23 @@ interface IData {
   isTrending: boolean;
 }
 
-export default function TVSeries() {
+export default function Bookmarked() {
   const data = useContext(DataContext);
-  const bookmarkedMovies = data.data?.filter(
-    (e) => e.isBookmarked && e.category === "Movie"
-  );
-  const bookmarkedTVSeries = data.data?.filter(
-    (e) => e.isBookmarked && e.category === "TV Series"
-  );
+  const bookmarkedMovies =
+    data.data?.filter((e) => e.isBookmarked && e.category === "Movie") || [];
+  const bookmarkedTVSeries =
+    data.data?.filter((e) => e.isBookmarked && e.category === "TV Series") ||
+    [];
+
+  const [searchMovieResults, setSearchMovieResults] =
+    useState<IData[]>(bookmarkedMovies);
+  const [searchTVResults, setSearchTVResults] =
+    useState<IData[]>(bookmarkedTVSeries);
+
+  useEffect(() => {
+    setSearchMovieResults(bookmarkedMovies);
+    setSearchTVResults(bookmarkedTVSeries);
+  }, [data.data]);
 
   const handleBookmarkClick = (clickedItem: IData) => {
     data.setData((prevData) => {
@@ -43,15 +52,30 @@ export default function TVSeries() {
     });
   };
 
+  const handleInput = (input: string) => {
+    setSearchMovieResults(
+      bookmarkedMovies.filter((e) =>
+        e.title.toLowerCase().includes(input.toLowerCase())
+      )
+    );
+    setSearchTVResults(
+      bookmarkedTVSeries.filter((e) =>
+        e.title.toLowerCase().includes(input.toLowerCase())
+      )
+    );
+  };
+
   return (
     <main className="px-4 py-6 flex flex-col gap-6">
-      <SearchBar placeholder="Search for bookmarked shows" />
+      <SearchBar
+        placeholder="Search for bookmarked shows"
+        onChange={(e) => handleInput(e.target.value)}
+      />
 
       <div className="flex flex-col gap-4">
         <p className="text-white text-2xl">Bookmarked Movies</p>
-
         <div className="grid grid-cols-2 gap-4">
-          {bookmarkedMovies?.map((e) => (
+          {searchMovieResults.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}
         </div>
@@ -59,9 +83,8 @@ export default function TVSeries() {
 
       <div className="flex flex-col gap-4">
         <p className="text-white text-2xl">Bookmarked TV Series</p>
-
         <div className="grid grid-cols-2 gap-4">
-          {bookmarkedTVSeries?.map((e) => (
+          {searchTVResults.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}
         </div>
