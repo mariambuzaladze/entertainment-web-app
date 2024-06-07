@@ -25,7 +25,7 @@ export default function Header() {
   }, [location]);
 
   return (
-    <header className="flex p-4 justify-between items-center bg-[#161D2F]">
+    <header className="flex p-4 justify-between items-center bg-[#161D2F] md:m-4 md:rounded-md">
       <img src={Logo} alt="icon logo" />
       <div className="flex gap-6">
         <Link to="/">

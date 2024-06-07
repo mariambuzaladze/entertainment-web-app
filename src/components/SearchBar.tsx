@@ -13,7 +13,7 @@ export default function SearchBar({
       <img src={SearchIcon} alt="search icon" />
       <input
         type="text"
-        className="bg-[#10141E] w-full text-white"
+        className="bg-[#10141E] w-full text-white md:text-lg"
         placeholder={placeholder}
         onChange={onChange}
       />

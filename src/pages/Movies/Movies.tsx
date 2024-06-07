@@ -59,7 +59,7 @@ export default function Movies() {
       <div className="flex flex-col gap-4">
         <p className="text-white text-2xl">Movies</p>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {searchResults.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}

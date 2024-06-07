@@ -63,7 +63,7 @@ export default function Home() {
           {trending.map((e) => (
             <div
               key={e.title}
-              className="flex flex-col gap-10 rounded-md p-4"
+              className="flex flex-col gap-10 rounded-md p-4 md:gap-[100px] md:p-6"
               style={{
                 backgroundImage: `url(${e.thumbnail.trending?.small})`,
                 backgroundSize: "cover",
@@ -78,7 +78,7 @@ export default function Home() {
 
       <div className="flex flex-col gap-4">
         <p className="text-white text-2xl">Recommended for you</p>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {searchResults.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}
