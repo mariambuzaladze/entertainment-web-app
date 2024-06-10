@@ -31,7 +31,7 @@ export default function BookmarkDiv({
 }) {
   return (
     <div
-      className="rounded-full bg-gray-800 p-2 w-fit self-end md:p-3"
+      className="rounded-full bg-gray-800 p-2 w-fit self-end md:p-3  cursor-pointer"
       onClick={onClick}
     >
       <img

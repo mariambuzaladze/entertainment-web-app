@@ -14,3 +14,19 @@
 body {
   background: var(--Dark-Blue, #10141e);
 }
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background-color: #1a1f2c;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+/* For Firefox */
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #1a1f2c transparent;
+}

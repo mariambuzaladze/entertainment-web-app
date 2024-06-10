@@ -51,7 +51,7 @@ export default function Movies() {
   };
 
   return (
-    <main className="px-4 py-6 flex flex-col gap-6">
+    <main className="px-4 py-6 flex flex-col gap-6 lg:ml-[100px]">
       <SearchBar
         placeholder="Search for movies"
         onChange={(e) => handleInput(e.target.value)}
@@ -59,7 +59,7 @@ export default function Movies() {
       <div className="flex flex-col gap-4">
         <p className="text-white text-2xl">Movies</p>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {searchResults.map((e) => (
             <Item key={e.title} e={e} onClick={() => handleBookmarkClick(e)} />
           ))}

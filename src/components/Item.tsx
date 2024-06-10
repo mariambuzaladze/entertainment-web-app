@@ -32,7 +32,7 @@ export default function Item({
   return (
     <div className="flex flex-col gap-2">
       <div
-        className="flex flex-col rounded-md pt-2 pr-2 pb-[70px] pl-[124px]"
+        className="flex flex-col rounded-md pt-2 pr-2 pb-[70px] pl-[124px] lg:pb-[130px]"
         style={{
           backgroundImage: `url(${e.thumbnail.regular.small})`,
           backgroundSize: "cover",
