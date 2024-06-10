@@ -20,7 +20,7 @@ body {
 }
 
 .overflow-x-auto::-webkit-scrollbar-thumb {
-  background-color: #1a1f2c;
+  background-color: #5a698f;
   border: 6px solid transparent;
   background-clip: content-box;
 }
@@ -28,5 +28,5 @@ body {
 /* For Firefox */
 .overflow-x-auto {
   scrollbar-width: thin;
-  scrollbar-color: #1a1f2c transparent;
+  scrollbar-color: #5a698f transparent;
 }
