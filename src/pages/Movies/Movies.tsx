@@ -3,26 +3,6 @@ import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import Item from "../../components/Item";
 
-interface IData {
-  title: string;
-  thumbnail: {
-    trending?: {
-      small: string;
-      large: string;
-    };
-    regular: {
-      small: string;
-      medium: string;
-      large: string;
-    };
-  };
-  year: number;
-  category: string;
-  rating: string;
-  isBookmarked: boolean;
-  isTrending: boolean;
-}
-
 export default function Movies() {
   const data = useContext(DataContext);
   const movies = data.data?.filter((e) => e.category === "Movie") || [];

@@ -5,26 +5,6 @@ import InfoContainer from "../../components/InfoContainer";
 import BookmarkDiv from "../../components/BookmarkDiv";
 import Item from "../../components/Item";
 
-interface IData {
-  title: string;
-  thumbnail: {
-    trending?: {
-      small: string;
-      large: string;
-    };
-    regular: {
-      small: string;
-      medium: string;
-      large: string;
-    };
-  };
-  year: number;
-  category: string;
-  rating: string;
-  isBookmarked: boolean;
-  isTrending: boolean;
-}
-
 export default function Home() {
   const data = useContext(DataContext);
   const [searchResults, setSearchResults] = useState<IData[]>(data.data || []);
