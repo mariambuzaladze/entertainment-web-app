@@ -3,6 +3,13 @@ import Line from "./Line";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useState } from "react";
+import Accounts from "../accounts.json";
+
+interface IAccount {
+  email: string;
+  password: string;
+}
 
 export default function TheForm({
   title,
@@ -19,6 +26,8 @@ export default function TheForm({
 }) {
   const linkTo = address === "Sign Up" ? "/signup" : "/";
 
+  const [accounts, setAccounts] = useState<IAccount[]>(Accounts);
+
   // Yup validation schema
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -33,6 +42,10 @@ export default function TheForm({
   // Form submit handler
   const handleSubmit = (values: any) => {
     console.log("Form data:", values);
+    setAccounts([
+      ...accounts,
+      { email: values.email, password: values.password },
+    ]);
   };
 
   return (
