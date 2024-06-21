@@ -17,6 +17,7 @@ export default function Login({
       buttonText="Login to your account"
       accountText="Don’t have an account?"
       address="Sign Up"
+      isLogin={true}
     />
   );
 }

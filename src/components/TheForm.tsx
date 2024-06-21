@@ -17,12 +17,14 @@ export default function TheForm({
   buttonText,
   accountText,
   address,
+  isLogin,
 }: {
   title: string;
   repeatPassword: boolean;
   buttonText: string;
   accountText: string;
   address: string;
+  isLogin: boolean;
 }) {
   const linkTo = address === "Sign Up" ? "/signup" : "/";
   const navigate = useNavigate();
@@ -47,14 +49,14 @@ export default function TheForm({
     password: Yup.string().required("Password is required"),
   });
 
-  const validationSchema = address === "Sign Up" ? loginSchema : signUpSchema;
+  const validationSchema = isLogin ? loginSchema : signUpSchema;
 
   // Form submit handler
   const handleSubmit = (values: any, { setFieldError }: any) => {
     console.log("Form data:", values);
     const { email, password } = values;
 
-    if ((address = "Sign Up")) {
+    if (isLogin) {
       const matchedAccount = accounts.find(
         (account) => account.email === email && account.password === password
       );

@@ -16,6 +16,7 @@ export default function SignUp({
       buttonText="Create an account"
       accountText="Alread have an account?"
       address="Login"
+      isLogin={false}
     />
   );
 }

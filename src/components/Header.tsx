@@ -13,7 +13,7 @@ export default function Header() {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/") {
+    if (path === "/home") {
       setPicked("home");
     } else if (path === "/movies") {
       setPicked("movies");
@@ -28,7 +28,7 @@ export default function Header() {
     <header className="flex p-4 justify-between items-center bg-[#161D2F] md:m-4 md:rounded-md lg:flex-col lg:fixed lg:left-0 lg:top-6 lg:h-5/6">
       <img src={Logo} alt="icon logo" />
       <div className="flex gap-6 lg:flex-col">
-        <Link to="/">
+        <Link to="/home">
           <svg
             width="20"
             height="20"
