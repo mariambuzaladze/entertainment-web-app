@@ -3,7 +3,11 @@ import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import Item from "../../components/Item";
 
-export default function TVSeries() {
+export default function TVSeries({
+  setShowHeader,
+}: {
+  setShowHeader: (show: boolean) => void;
+}) {
   const data = useContext(DataContext);
   const tvSeries = data.data?.filter((e) => e.category === "TV Series") || [];
 
@@ -12,6 +16,10 @@ export default function TVSeries() {
   useEffect(() => {
     setSearchResults(tvSeries);
   }, [data.data]);
+
+  useEffect(() => {
+    setShowHeader(true);
+  }, []);
 
   const handleBookmarkClick = (clickedItem: IData) => {
     data.setData((prevData) => {

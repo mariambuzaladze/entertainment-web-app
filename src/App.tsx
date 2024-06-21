@@ -7,26 +7,7 @@ import Movies from "./pages/Movies/Movies";
 import TVSeries from "./pages/TVSeries/TVSeries";
 import Bookmarked from "./pages/Bookmarked/Bookmarked";
 import Header from "./components/Header";
-
-interface IData {
-  title: string;
-  thumbnail: {
-    trending?: {
-      small: string;
-      large: string;
-    };
-    regular: {
-      small: string;
-      medium: string;
-      large: string;
-    };
-  };
-  year: number;
-  category: string;
-  rating: string;
-  isBookmarked: boolean;
-  isTrending: boolean;
-}
+import Login from "./pages/Login/Login";
 
 interface IDataContext {
   data: IData[] | null;
@@ -40,16 +21,30 @@ export const DataContext = createContext<IDataContext>({
 
 function App() {
   const [data, setData] = useState<IData[]>(DataJson);
+  const [showHeader, setShowHeader] = useState<boolean>(true);
 
   return (
     <BrowserRouter>
-      <Header />
+      {showHeader && <Header />}
       <DataContext.Provider value={{ data, setData }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/tvseries" element={<TVSeries />} />
-          <Route path="/bookmarked" element={<Bookmarked />} />
+          <Route path="/" element={<Login setShowHeader={setShowHeader} />} />
+          <Route
+            path="/home"
+            element={<Home setShowHeader={setShowHeader} />}
+          />
+          <Route
+            path="/movies"
+            element={<Movies setShowHeader={setShowHeader} />}
+          />
+          <Route
+            path="/tvseries"
+            element={<TVSeries setShowHeader={setShowHeader} />}
+          />
+          <Route
+            path="/bookmarked"
+            element={<Bookmarked setShowHeader={setShowHeader} />}
+          />
         </Routes>
       </DataContext.Provider>
     </BrowserRouter>

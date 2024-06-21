@@ -1,15 +1,27 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import InfoContainer from "../../components/InfoContainer";
 import BookmarkDiv from "../../components/BookmarkDiv";
 import Item from "../../components/Item";
 
-export default function Home() {
+export default function Home({
+  setShowHeader,
+}: {
+  setShowHeader: (show: boolean) => void;
+}) {
+  useEffect(() => {
+    setShowHeader(true);
+  }, []);
+
   const data = useContext(DataContext);
   const [searchResults, setSearchResults] = useState<IData[]>(data.data || []);
 
   const trending = searchResults.filter((e) => e.isTrending);
+
+  useEffect(() => {
+    setSearchResults(data.data || []);
+  }, [data.data]);
 
   const handleBookmarkClick = (clickedItem: IData) => {
     data.setData((prevData) => {

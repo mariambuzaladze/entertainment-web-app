@@ -3,7 +3,11 @@ import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import Item from "../../components/Item";
 
-export default function Bookmarked() {
+export default function Bookmarked({
+  setShowHeader,
+}: {
+  setShowHeader: (show: boolean) => void;
+}) {
   const data = useContext(DataContext);
   const bookmarkedMovies =
     data.data?.filter((e) => e.isBookmarked && e.category === "Movie") || [];
@@ -20,6 +24,10 @@ export default function Bookmarked() {
     setSearchMovieResults(bookmarkedMovies);
     setSearchTVResults(bookmarkedTVSeries);
   }, [data.data]);
+
+  useEffect(() => {
+    setShowHeader(true);
+  }, []);
 
   const handleBookmarkClick = (clickedItem: IData) => {
     data.setData((prevData) => {
