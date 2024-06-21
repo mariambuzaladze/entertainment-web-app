@@ -7,8 +7,10 @@ import Item from "../../components/Item";
 
 export default function Home({
   setShowHeader,
+  handleBookmarkClick,
 }: {
   setShowHeader: (show: boolean) => void;
+  handleBookmarkClick: (e: any) => void;
 }) {
   useEffect(() => {
     setShowHeader(true);
@@ -23,16 +25,16 @@ export default function Home({
     setSearchResults(data.data || []);
   }, [data.data]);
 
-  const handleBookmarkClick = (clickedItem: IData) => {
-    data.setData((prevData) => {
-      return prevData.map((item) => {
-        if (item.title === clickedItem.title) {
-          return { ...item, isBookmarked: !item.isBookmarked };
-        }
-        return item;
-      });
-    });
-  };
+  // const handleBookmarkClick = (clickedItem: IData) => {
+  //   data.setData((prevData) => {
+  //     return prevData.map((item) => {
+  //       if (item.title === clickedItem.title) {
+  //         return { ...item, isBookmarked: !item.isBookmarked };
+  //       }
+  //       return item;
+  //     });
+  //   });
+  // };
 
   const handleInput = (input: string) => {
     setSearchResults(

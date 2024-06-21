@@ -24,6 +24,17 @@ function App() {
   const [data, setData] = useState<IData[]>(DataJson);
   const [showHeader, setShowHeader] = useState<boolean>(true);
 
+  const handleBookmarkClick = (clickedItem: IData) => {
+    setData((prevData) => {
+      return prevData.map((item) => {
+        if (item.title === clickedItem.title) {
+          return { ...item, isBookmarked: !item.isBookmarked };
+        }
+        return item;
+      });
+    });
+  };
+
   return (
     <BrowserRouter>
       {showHeader && <Header />}
@@ -36,19 +47,39 @@ function App() {
           />
           <Route
             path="/home"
-            element={<Home setShowHeader={setShowHeader} />}
+            element={
+              <Home
+                setShowHeader={setShowHeader}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            }
           />
           <Route
             path="/movies"
-            element={<Movies setShowHeader={setShowHeader} />}
+            element={
+              <Movies
+                setShowHeader={setShowHeader}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            }
           />
           <Route
             path="/tvseries"
-            element={<TVSeries setShowHeader={setShowHeader} />}
+            element={
+              <TVSeries
+                setShowHeader={setShowHeader}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            }
           />
           <Route
             path="/bookmarked"
-            element={<Bookmarked setShowHeader={setShowHeader} />}
+            element={
+              <Bookmarked
+                setShowHeader={setShowHeader}
+                handleBookmarkClick={handleBookmarkClick}
+              />
+            }
           />
         </Routes>
       </DataContext.Provider>

@@ -5,8 +5,10 @@ import Item from "../../components/Item";
 
 export default function Bookmarked({
   setShowHeader,
+  handleBookmarkClick,
 }: {
   setShowHeader: (show: boolean) => void;
+  handleBookmarkClick: (e: any) => void;
 }) {
   const data = useContext(DataContext);
   const bookmarkedMovies =
@@ -29,16 +31,16 @@ export default function Bookmarked({
     setShowHeader(true);
   }, []);
 
-  const handleBookmarkClick = (clickedItem: IData) => {
-    data.setData((prevData) => {
-      return prevData.map((item) => {
-        if (item.title === clickedItem.title) {
-          return { ...item, isBookmarked: !item.isBookmarked };
-        }
-        return item;
-      });
-    });
-  };
+  // const handleBookmarkClick = (clickedItem: IData) => {
+  //   data.setData((prevData) => {
+  //     return prevData.map((item) => {
+  //       if (item.title === clickedItem.title) {
+  //         return { ...item, isBookmarked: !item.isBookmarked };
+  //       }
+  //       return item;
+  //     });
+  //   });
+  // };
 
   const handleInput = (input: string) => {
     setSearchMovieResults(

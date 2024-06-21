@@ -5,8 +5,10 @@ import Item from "../../components/Item";
 
 export default function Movies({
   setShowHeader,
+  handleBookmarkClick,
 }: {
   setShowHeader: (show: boolean) => void;
+  handleBookmarkClick: (e: any) => void;
 }) {
   const data = useContext(DataContext);
   const movies = data.data?.filter((e) => e.category === "Movie") || [];
@@ -21,16 +23,16 @@ export default function Movies({
     setShowHeader(true);
   }, []);
 
-  const handleBookmarkClick = (clickedItem: IData) => {
-    data.setData((prevData) => {
-      return prevData.map((item) => {
-        if (item.title === clickedItem.title) {
-          return { ...item, isBookmarked: !item.isBookmarked };
-        }
-        return item;
-      });
-    });
-  };
+  // const handleBookmarkClick = (clickedItem: IData) => {
+  //   data.setData((prevData) => {
+  //     return prevData.map((item) => {
+  //       if (item.title === clickedItem.title) {
+  //         return { ...item, isBookmarked: !item.isBookmarked };
+  //       }
+  //       return item;
+  //     });
+  //   });
+  // };
 
   const handleInput = (input: string) => {
     setSearchResults(
