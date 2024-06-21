@@ -10,5 +10,13 @@ export default function Login({
     setShowHeader(false);
   });
 
-  return <Form />;
+  return (
+    <Form
+      title="Login"
+      repeatPassword={false}
+      buttonText="Login to your account"
+      accountText="Don’t have an account?"
+      address="Sign Up"
+    />
+  );
 }

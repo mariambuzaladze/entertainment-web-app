@@ -8,7 +8,7 @@ import TVSeries from "./pages/TVSeries/TVSeries";
 import Bookmarked from "./pages/Bookmarked/Bookmarked";
 import Header from "./components/Header";
 import Login from "./pages/Forms/Login";
-//import SignUp from "./pages/Forms/SignUp";
+import SignUp from "./pages/Forms/SignUp";
 
 interface IDataContext {
   data: IData[] | null;
@@ -30,10 +30,10 @@ function App() {
       <DataContext.Provider value={{ data, setData }}>
         <Routes>
           <Route path="/" element={<Login setShowHeader={setShowHeader} />} />
-          {/* <Route
+          <Route
             path="/signup"
             element={<SignUp setShowHeader={setShowHeader} />}
-          /> */}
+          />
           <Route
             path="/home"
             element={<Home setShowHeader={setShowHeader} />}
