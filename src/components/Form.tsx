@@ -39,6 +39,16 @@ export default function form({
           />
 
           <Line />
+
+          {repeatPassword && (
+            <input
+              type="password"
+              placeholder="Repeat Password"
+              className="bg-[#161D2F]"
+            />
+          )}
+
+          {repeatPassword && <Line />}
         </div>
 
         <button className="text-white p-3 w-full rounded-md bg-[#FC4747]">
