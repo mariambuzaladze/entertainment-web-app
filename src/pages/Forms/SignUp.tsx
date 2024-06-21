@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Form from "../../components/Form";
 
 export default function SignUp({
   setShowHeader,
@@ -8,5 +9,13 @@ export default function SignUp({
   useEffect(() => {
     setShowHeader(false);
   });
-  return <p>signup</p>;
+  return (
+    <Form
+      title="Sign Up"
+      repeatPassword={true}
+      buttonText="Create an account"
+      accountText="Alread have an account?"
+      address="Login"
+    />
+  );
 }

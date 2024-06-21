@@ -15,6 +15,8 @@ export default function form({
   accountText: string;
   address: string;
 }) {
+  const linkTo = address === "Sign Up" ? "/signup" : "/";
+
   return (
     <main className="flex flex-col justiy-center items-center pt-12 p-6 h-screen gap-14">
       <img src={Logo} alt="icon logo" />
@@ -45,7 +47,7 @@ export default function form({
 
         <p className="text-white md:text-center">
           {accountText}{" "}
-          <Link to={"/signup"} className="text-[#FC4747]">
+          <Link to={linkTo} className="text-[#FC4747]">
             {" "}
             {address}
           </Link>
