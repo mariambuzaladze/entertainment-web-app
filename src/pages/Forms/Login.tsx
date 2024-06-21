@@ -1,4 +1,4 @@
-import Form from "../../components/Form";
+import Form from "../../components/TheForm";
 import { useEffect } from "react";
 
 export default function Login({

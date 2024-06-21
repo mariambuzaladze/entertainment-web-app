@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Form from "../../components/Form";
+import Form from "../../components/TheForm";
 
 export default function SignUp({
   setShowHeader,
