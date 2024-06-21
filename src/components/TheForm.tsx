@@ -1,6 +1,6 @@
 import Logo from "/assets/logo.svg";
 import Line from "./Line";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -25,11 +25,12 @@ export default function TheForm({
   address: string;
 }) {
   const linkTo = address === "Sign Up" ? "/signup" : "/";
+  const navigate = useNavigate();
 
   const [accounts, setAccounts] = useState<IAccount[]>(Accounts);
 
   // Yup validation schema
-  const validationSchema = Yup.object().shape({
+  const signUpSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email address").required("Required"),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters")
@@ -39,13 +40,36 @@ export default function TheForm({
       .required("Required"),
   });
 
+  const loginSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string().required("Password is required"),
+  });
+
+  const validationSchema = address === "Sign Up" ? loginSchema : signUpSchema;
+
   // Form submit handler
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: any, { setFieldError }: any) => {
     console.log("Form data:", values);
-    setAccounts([
-      ...accounts,
-      { email: values.email, password: values.password },
-    ]);
+    const { email, password } = values;
+
+    if ((address = "Sign Up")) {
+      const matchedAccount = accounts.find(
+        (account) => account.email === email && account.password === password
+      );
+
+      if (matchedAccount) {
+        // Successful login
+        navigate("/home");
+      } else {
+        // Failed login
+        setFieldError("password", "Invalid email or password");
+      }
+    } else {
+      setAccounts([...accounts, { email: email, password: password }]);
+      navigate("/home");
+    }
   };
 
   return (
