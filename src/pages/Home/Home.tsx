@@ -1,9 +1,11 @@
 import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../App";
 import SearchBar from "../../components/SearchBar";
 import InfoContainer from "../../components/InfoContainer";
 import BookmarkDiv from "../../components/BookmarkDiv";
 import Item from "../../components/Item";
+import PlayIcon from "/assets/icon-play.svg";
 
 export default function Home({
   setShowHeader,
@@ -15,6 +17,9 @@ export default function Home({
   useEffect(() => {
     setShowHeader(true);
   }, []);
+
+  const navigate = useNavigate();
+  const [hover, setHover] = useState("");
 
   const data = useContext(DataContext);
   const [searchResults, setSearchResults] = useState<IData[]>(data.data || []);
@@ -45,14 +50,35 @@ export default function Home({
         <div className="overflow-x-auto whitespace-nowrap flex gap-4">
           {trending.map((e) => (
             <div
+              onMouseEnter={() => {
+                setHover(e.title);
+              }}
+              onMouseLeave={() => {
+                setHover("false");
+              }}
+              onClick={() => {
+                navigate("/play");
+              }}
               key={e.title}
-              className="flex flex-col gap-10 rounded-md p-4 md:gap-[90px] md:p-6 cursor-pointer"
+              className={`flex flex-col relative gap-10 rounded-md p-4 md:gap-[90px] md:p-6 cursor-pointer ${
+                hover === e.title ? "opacity-60" : ""
+              }`}
               style={{
                 backgroundImage: `url(${e.thumbnail.trending?.small})`,
                 backgroundSize: "cover",
               }}
             >
               <BookmarkDiv onClick={() => handleBookmarkClick(e)} e={e} />
+
+              {hover === e.title ? (
+                <div className="flex gap-4 p-2 pl-3 pr-3 items-center text-white absolute left-[40%] top-[45%] rounded-2xl bg-gray-800 cursor-pointer">
+                  <img src={PlayIcon} alt="play icon" />
+                  <p>PLAY</p>
+                </div>
+              ) : (
+                ""
+              )}
+
               <InfoContainer item={e} />
             </div>
           ))}

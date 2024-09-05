@@ -9,6 +9,7 @@ import Bookmarked from "./pages/Bookmarked/Bookmarked";
 import Header from "./components/Header";
 import Login from "./pages/Forms/Login";
 import SignUp from "./pages/Forms/SignUp";
+import Play from "./pages/Play/Play";
 
 interface IDataContext {
   data: IData[] | null;
@@ -80,6 +81,10 @@ function App() {
                 handleBookmarkClick={handleBookmarkClick}
               />
             }
+          />
+          <Route
+            path="/play"
+            element={<Play setShowHeader={setShowHeader} />}
           />
         </Routes>
       </DataContext.Provider>
