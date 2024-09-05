@@ -31,17 +31,6 @@ export default function Bookmarked({
     setShowHeader(true);
   }, []);
 
-  // const handleBookmarkClick = (clickedItem: IData) => {
-  //   data.setData((prevData) => {
-  //     return prevData.map((item) => {
-  //       if (item.title === clickedItem.title) {
-  //         return { ...item, isBookmarked: !item.isBookmarked };
-  //       }
-  //       return item;
-  //     });
-  //   });
-  // };
-
   const handleInput = (input: string) => {
     setSearchMovieResults(
       bookmarkedMovies.filter((e) =>

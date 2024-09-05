@@ -23,17 +23,6 @@ export default function Movies({
     setShowHeader(true);
   }, []);
 
-  // const handleBookmarkClick = (clickedItem: IData) => {
-  //   data.setData((prevData) => {
-  //     return prevData.map((item) => {
-  //       if (item.title === clickedItem.title) {
-  //         return { ...item, isBookmarked: !item.isBookmarked };
-  //       }
-  //       return item;
-  //     });
-  //   });
-  // };
-
   const handleInput = (input: string) => {
     setSearchResults(
       movies.filter((e) => e.title.toLowerCase().includes(input.toLowerCase()))

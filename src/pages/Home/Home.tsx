@@ -25,17 +25,6 @@ export default function Home({
     setSearchResults(data.data || []);
   }, [data.data]);
 
-  // const handleBookmarkClick = (clickedItem: IData) => {
-  //   data.setData((prevData) => {
-  //     return prevData.map((item) => {
-  //       if (item.title === clickedItem.title) {
-  //         return { ...item, isBookmarked: !item.isBookmarked };
-  //       }
-  //       return item;
-  //     });
-  //   });
-  // };
-
   const handleInput = (input: string) => {
     setSearchResults(
       data.data?.filter((e) =>
@@ -57,7 +46,7 @@ export default function Home({
           {trending.map((e) => (
             <div
               key={e.title}
-              className="flex flex-col gap-10 rounded-md p-4 md:gap-[90px] md:p-6"
+              className="flex flex-col gap-10 rounded-md p-4 md:gap-[90px] md:p-6 cursor-pointer"
               style={{
                 backgroundImage: `url(${e.thumbnail.trending?.small})`,
                 backgroundSize: "cover",
