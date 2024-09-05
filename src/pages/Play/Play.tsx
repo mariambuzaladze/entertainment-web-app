@@ -12,12 +12,12 @@ export default function Play({
 
   return (
     <div className="flex min-h-screen text-white items-center justify-center font-bold">
-      <div className="absolute top-[45px] left-[48px] cursor-pointer">
+      <div className="absolute md:top-[45px] md:left-[48px]  top-[20px] left-[10px] cursor-pointer">
         <GoBack />
       </div>
-      <p className="text-3xl">
+      <p className="md:text-3xl text-xl">
         Oops, this movie is currently unavailable! <br />
-        <span className="italic text-lg font-medium">
+        <span className="italic md:text-lg font-medium text-sm">
           (It seems like all movies are currently unavailable, but you can still
           browse their posters on the home page!)
         </span>
